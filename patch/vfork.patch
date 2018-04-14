@@ -1,0 +1,23 @@
+diff --git a/arch/lkl/include/asm/syscalls.h b/arch/lkl/include/asm/syscalls.h
+index 4116e8a0cc6f..082019d22a10 100644
+--- a/arch/lkl/include/asm/syscalls.h
++++ b/arch/lkl/include/asm/syscalls.h
+@@ -9,7 +9,7 @@ void wakeup_idle_host_task(void);
+ #define sys_mmap sys_mmap_pgoff
+ #define sys_mmap2 sys_mmap_pgoff
+ #define sys_clone sys_ni_syscall
+-#define sys_vfork sys_ni_syscall
++// #define sys_vfork sys_ni_syscall
+ #define sys_rt_sigreturn sys_ni_syscall
+ 
+ #include <asm-generic/syscalls.h>
+diff --git a/arch/lkl/include/asm/unistd.h b/arch/lkl/include/asm/unistd.h
+index c3451dfdb4e9..e8356c38d942 100644
+--- a/arch/lkl/include/asm/unistd.h
++++ b/arch/lkl/include/asm/unistd.h
+@@ -26,3 +26,5 @@ __SYSCALL(__NR_virtio_mmio_device_add, sys_virtio_mmio_device_add)
+ 	    __ASCII_MAP(x, __SC_ASCII, __VA_ARGS__) ")\\n\"\n"		\
+ 	    ".ascii \"#endif\\n\"\n"					\
+ 	    ".section .text\n");
++
++# define __ARCH_WANT_SYS_VFORK
